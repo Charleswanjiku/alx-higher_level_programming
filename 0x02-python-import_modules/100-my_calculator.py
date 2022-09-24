@@ -1,19 +1,45 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-
+    from sys import argv
     from calculator_1 import add, sub, mul, div
-    import sys
+    count = len(argv)
 
-    if len(sys.argv) - 1 != 3:
-        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        sys.exit(1)
+     if count != 4:
+         print("Usage: {} <a> <operator> <b>".format(argv[0]))
+         exit(1)
 
-        blt_op = {"+": add, "-": sub, "*": mul, "/": div}
-        if sys.argv[2] not in list(blt_op.keys()):
-            print("Unknown operator. Available operators: +, -, * and /")
-            sys.exit(1)
+          num1 = int(argv[1])
+          num2 = int(argv[3])
+          op = argv[2]
 
-            a = int(sys.argv[1])
-            b = int(sys.argv[3])
+          def not_found():
+              print("Unknown operator. Available operators: +, -, * and /")
+              exit(1)
 
-            print("{} {} {} = {}".format(a, sys.argv[2], b, blt_op[sys.argv[2]](a, b)))
+               def my_add():
+                   total = add(num1, num2)
+                   print("{:d} + {:d} = {:d}".format(num1, num2, total))
+                   return total
+
+               def my_sub():
+                    total = sub(num1, num2)
+                    print("{:d} - {:d} = {:d}".format(num1, num2, total))
+                    return total
+
+                def my_mul():
+                    total = mul(num1, num2)
+                    print("{:d} * {:d} = {:d}".format(num1, num2, total))
+                    return total
+
+                def my_div():
+                    total = div(num1, num2)
+                    print("{:d} / {:d} = {:d}".format(num1, num2, total))
+                    return total
+
+                options = {
+                        "+": my_add,
+                        "-": my_sub,
+                        "*": my_mul,
+                        "/": my_div
+                        }
+                options.get(op, not_found)()

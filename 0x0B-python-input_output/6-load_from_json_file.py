@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""
-Contains the "load_from_json_file" function
-"""
-
+"""Contain a single funtion"""
 import json
 
+
 def load_from_json_file(filename):
-    """creates an Object from a "JSON file" """
-    with open(filename, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    """Return deserialized data from file"""
+    with open(filename, encoding="utf-8") as f:
+        data = json.load(f)
+    return data

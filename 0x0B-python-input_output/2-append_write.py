@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""
-Contains the function "append_wrtie"
-"""
+"""Contain a function that appends to file"""
+
 
 def append_write(filename="", text=""):
-    """returns the number of chars appended to "filename" from "text" """
-    with open(filename, 'a', encoding='utf=8') as f:
+    """Handles content appendint to file"""
+    with open(filename, mode="a", encoding="utf-8") as f:
         return f.write(text)
